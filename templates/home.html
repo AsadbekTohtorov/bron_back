@@ -13,10 +13,33 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="bron_id" value="{{ bron.id }}">
+                <input type="hidden" name="form1" value="test">
                 <input type="checkbox" name="confirm">
                 <input type="submit" value="Отправить">
             </form>
         {% endif %}
         <br><br>
     {% endfor %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="form2" value="test">
+        <label for="origin">Откуда:</label><br>
+        <input type="text" id="origin" name="origin" maxlength="255" required><br><br>
+
+        <label for="destination">Куда:</label><br>
+        <input type="text" id="destination" name="destination" maxlength="255" required><br><br>
+
+        <label for="date">Дата:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="departure_time">Время отправления:</label><br>
+        <input type="time" id="departure_time" name="departure_time" required><br><br>
+
+        <label for="arrival_time">Время прибытия:</label><br>
+        <input type="time" id="arrival_time" name="arrival_time" required><br><br>
+
+        <input type="submit" value="Отправить">
+    </form>
+
 {% endblock content %}
