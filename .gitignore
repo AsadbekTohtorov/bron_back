@@ -1,0 +1,13 @@
+# Pipenv files
+Pipfile
+Pipfile.lock
+
+# Ignore JetBrains IntelliJ IDEA files
+.idea/
+
+# Migration files
+**/migrations/*
+!**/migrations/__init__.py
+
+# DB test server
+db.sqlite3

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Lorem ipsum</p>
+    {% for bron in brons %}
+        <h2><b>Откуда:</b> {{ bron.origin }}</h2>
+        <p><b>Куда:</b> {{ bron.destination }}</p>
+        <p><b>Дата:</b> {{ bron.date }}</p>
+        <p><b>Время отправления:</b> {{ bron.departure_time }}</p>
+        <p><b>Время прибытия:</b> {{ bron.arrival_time }}</p>
+        {% if user.is_superuser %}
+            <p><b>Подтверждено администратором: </b>{{ bron.admin_confirmed }}</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="bron_id" value="{{ bron.id }}">
+                <input type="checkbox" name="confirm">
+                <input type="submit" value="Отправить">
+            </form>
+        {% endif %}
+        <br><br>
+    {% endfor %}
+{% endblock content %}
